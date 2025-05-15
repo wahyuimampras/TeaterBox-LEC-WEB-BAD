@@ -1,0 +1,22 @@
+.footer {
+  background-color: #4c0d25;
+  color: #fff;
+  padding: 1rem 1rem;
+  text-align: center;
+  font-size: small;
+  position: static;
+}
+
+.footer-content {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.footer .links a,
+.footer .socials a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}

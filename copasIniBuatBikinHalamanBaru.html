@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Show</title> 
+  <link rel="stylesheet" href="style/show.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <!-- buat section sendiri khusus untuk halaman kalian -->
+  <section class="show-section">
+
+  </section>
+
+  <!-- ini kebawah gausah diedit -->
+  <div id="footer"></div>
+
+  <script>
+    async function loadHTML(id, file, callback) {
+    const res = await fetch(`masterComponent/${file}`);
+    const text = await res.text();
+    document.getElementById(id).innerHTML = text;
+    if (callback) callback();
+  }
+
+  loadHTML("navbar", "navbar.html", () => {
+    const script = document.createElement("script");
+    script.src = "./js/navbar.js";
+    script.onload = () => initNavbar();
+    document.body.appendChild(script);
+  });
+
+  loadHTML("footer", "footer.html");
+  </script>
+</body>
+</html>

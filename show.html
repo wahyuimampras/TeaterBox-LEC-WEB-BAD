@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Show</title>
+  <link rel="stylesheet" href="style/show.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <!-- Section show -->
+  <section class="show-section">
+  <div class="show-header">
+    <h2>Show</h2>
+    <div class="sort-box">
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option>Last Update</option>
+        <option>Name</option>
+        <option>Price</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="show-grid">
+    <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+     <div class="show-card">
+      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+    </div>
+   </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script>
+    async function loadHTML(id, file, callback) {
+    const res = await fetch(`masterComponent/${file}`);
+    const text = await res.text();
+    document.getElementById(id).innerHTML = text;
+    if (callback) callback();
+  }
+
+  loadHTML("navbar", "navbar.html", () => {
+    const script = document.createElement("script");
+    script.src = "./js/navbar.js";
+    script.onload = () => initNavbar(); // PANGGIL FUNGSI SAAT SCRIPT SUDAH DIMUAT
+    document.body.appendChild(script);
+  });
+
+  loadHTML("footer", "footer.html");
+  </script>
+</body>
+</html>
