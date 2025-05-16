@@ -104,27 +104,28 @@ document.getElementById('register-form').addEventListener('submit', (e) => {
   let confirmPassword = document.getElementById('confirm-password').value;
 
   if (name === "") {
-    openPopup("../asset/error.png", "Error!", "Name cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Name cannot be empty");
   } else if (name.length < 5) {
-    openPopup("../asset/error.png", "Error!", "Name cannot be less than 5 characters");
+    openPopup("./asset/error.png", "Error!", "Name cannot be less than 5 characters");
   } else if (emailRegist === "") {
-    openPopup("../asset/error.png", "Error!", "Email cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Email cannot be empty");
   } else if (passwordRegist === "") {
-    openPopup("../asset/error.png", "Error!", "Password cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Password cannot be empty");
   } else if (passwordRegist.length < 8) {
-    openPopup("../asset/error.png", "Error!", "Password cannot be less than 8 characters");
+    openPopup("./asset/error.png", "Error!", "Password cannot be less than 8 characters");
   } else if (confirmPassword === "") {
-    openPopup("../asset/error.png", "Error!", "Confirm Password cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Confirm Password cannot be empty");
   } else if (passwordRegist !== confirmPassword) {
-    openPopup("../asset/error.png", "Error!", "Password and Confirm Password do not match");
+    openPopup("./asset/error.png", "Error!", "Password and Confirm Password do not match");
   } else {
-    openPopup("../asset/success.png", "Success!", "Your registration is successful");
-    // switch ke form sign in setelah sukses
+    openPopup("./asset/success.png", "Success!", "Your registration is successful");
+    document.getElementById('register-form').reset();
     setTimeout(() => {
       closePopup();
       showSignInForm();
     }, 2000);
   }
+  document.getElementById('register-form').reset();
 });
 
 document.getElementById('login-form').addEventListener('submit', (e) => {
@@ -134,13 +135,15 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
   let passwordLogin = document.getElementById('password-login').value;
 
   if (emailLogin === "") {
-    openPopup("../asset/error.png", "Error!", "Email cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Email cannot be empty");
   } else if (passwordLogin === "") {
-    openPopup("../asset/error.png", "Error!", "Password cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Password cannot be empty");
   } else {
-    openPopup("../asset/success.png", "Success!", "Login Successful! You will be redirected...");
+    openPopup("./asset/success.png", "Success!", "Login Successful! You will be redirected...");
     setTimeout(() => {
+      closePopup()
       window.location.href = "home.html";
     }, 2000);
   }
+  document.getElementById('login-form').reset();
 });
