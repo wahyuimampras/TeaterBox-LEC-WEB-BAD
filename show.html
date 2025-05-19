@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TeaterBox - Show</title>
   <link rel="stylesheet" href="style/show.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
 </head>
 <body>
   <div id="navbar"></div>
@@ -25,20 +26,24 @@
 
   <div class="show-grid">
     <div class="show-card">
-      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
+      <img src="./asset/poster1.png" alt="Poster" />
       <h3>Mary Poppins</h3>
+      <p class="location">Jakarta, March 18th, 2025</p>
+      <p class="price">IDR100.000</p>
+      <div class="card-buttons">
+        <button class="trailer-btn">Watch Trailer</button>
+        <button class="buy-btn">Buy Ticket</button>
+      </div>
+    </div>
+     <div class="show-card">
+      <img src="./asset/poster2.png" alt="Poster" />
+      <h3>Ordinary Days</h3>
       <p class="location">Jakarta, March 18th, 2025</p>
       <p class="price">IDR100.000</p>
     </div>
      <div class="show-card">
-      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
-      <h3>Mary Poppins</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
-    </div>
-     <div class="show-card">
-      <img src="https://i.imgur.com/z8I0xqF.png" alt="Poster" />
-      <h3>Mary Poppins</h3>
+      <img src="./asset/poster3.png" alt="Poster" />
+      <h3>High Schoool</h3>
       <p class="location">Jakarta, March 18th, 2025</p>
       <p class="price">IDR100.000</p>
     </div>
@@ -94,7 +99,7 @@
   loadHTML("navbar", "navbar.html", () => {
     const script = document.createElement("script");
     script.src = "./js/navbar.js";
-    script.onload = () => initNavbar(); // PANGGIL FUNGSI SAAT SCRIPT SUDAH DIMUAT
+    script.onload = () => initNavbar();
     document.body.appendChild(script);
   });
 

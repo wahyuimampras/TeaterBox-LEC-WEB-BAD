@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
 * {
   margin: 0;
   padding: 0;
@@ -45,41 +48,99 @@ body {
 
 .show-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
 }
 
 .show-card {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  position: relative;
+  width: 250px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.show-card img {
+  max-width: 230px;
+  width: max-content;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.show-card h3 {
+  margin: 10px 0 5px;
+}
+
+.show-card .location,
+.show-card .price {
+  margin: 2px 0;
+  color: #555;
 }
 
 .show-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
 }
 
-.show-card img {
-  width: 100%;
-  border-radius: 10px;
+.card-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.show-card h3 {
-  margin: 0.5rem 0 0.2rem;
-  color: #4c0d25;
+.show-card:hover .card-buttons {
+  opacity: 1;
 }
 
-.location {
-  font-size: 0.85rem;
-  color: #888;
-}
-
-.price {
-  color: #4c0d25;
+.card-buttons button {
+  padding: 10px 15px;
+  background-color: #2e86de;
+  border: none;
+  border-radius: 8px;
+  color: white;
   font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
+
+.card-buttons button:hover {
+  background-color: #1b4f72;
+}
+
+/* Opsional: efek blur latar belakang saat hover */
+.show-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.show-card:hover::after {
+  opacity: 1;
+}
+
+/* Tombol di atas layer blur */
+.card-buttons {
+  z-index: 2;
+}
+
 
 
 
