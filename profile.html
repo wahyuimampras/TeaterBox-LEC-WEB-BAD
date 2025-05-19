@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Profile</title> 
+  <link rel="stylesheet" href="style/profile.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="profile-container">
+      <h1 class="profile-title">User Profile</h1>
+      <div class="profile-card">
+        <div class="profile-item">
+          <label>Full Name</label>
+          <input class="profile-value editable" type="text" value="Putri Prama" disabled>
+        </div>
+        <div class="profile-item">
+          <label>Email</label>
+          <input class="profile-value editable" type="email" value="contoh@example.com" disabled>
+        </div>
+        <div class="profile-item">
+          <label>Date of Birth</label>
+          <input class="profile-value editable" type="date" value="2000-02-15" disabled>
+        </div>
+        <div class="profile-item">
+          <label>Phone Number</label>
+          <input class="profile-value editable" type="tel" value="+62 812 3456 7890" disabled>
+        </div>
+        <div class="profile-item">
+          <label>Gender</label>
+          <select class="profile-value editable" disabled>
+            <option selected>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="profile-item">
+          <label>Address</label>
+          <textarea class="profile-value editable" rows="2" disabled>Jl. Melati No. 123, Jakarta</textarea>
+        </div>
+      </div>
+      <button class="edit-button" id="editProfileBtn">Edit Profile</button>
+      <button class="history-toggle-button" id="toggleHistory">Watched History</button>
+    </div>
+  </section>
+
+  <!-- Sidebar History -->
+  <div class="sidebar-history" id="sidebarHistory">
+    <div class="sidebar-header">
+      <h3>Watched Shows</h3>
+      <button class="close-sidebar" id="closeSidebar">&times;</button>
+    </div>
+    <div class="history-list">
+      <div class="history-item">
+        <h4>Mary Poppins</h4>
+        <p>Jakarta, March 18th, 2025</p>
+        <p>IDR100,000</p>
+      </div>
+      <div class="history-item">
+        <h4>The Phantom of the Opera</h4>
+        <p>Bandung, April 2nd, 2025</p>
+        <p>IDR150,000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div id="footer"></div>
+
+  <script>
+    async function loadHTML(id, file, callback) {
+      const res = await fetch(`masterComponent/${file}`);
+      const text = await res.text();
+      document.getElementById(id).innerHTML = text;
+      if (callback) callback();
+    }
+
+    loadHTML("navbar", "navbar.html", () => {
+      const script = document.createElement("script");
+      script.src = "./js/navbar.js";
+      script.onload = () => initNavbar();
+      document.body.appendChild(script);
+    });
+
+    loadHTML("footer", "footer.html");
+
+    // Edit button logic
+    document.addEventListener("DOMContentLoaded", function () {
+      const container = document.querySelector(".profile-container");
+      const inputs = container.querySelectorAll(".editable");
+      const button = document.getElementById("editProfileBtn");
+
+      let editMode = false;
+
+      button.addEventListener("click", () => {
+        editMode = !editMode;
+        container.classList.toggle("edit-mode");
+
+        inputs.forEach((el) => {
+          el.disabled = !editMode;
+        });
+
+        button.textContent = editMode ? "Save Profile" : "Edit Profile";
+      });
+
+      // Sidebar toggle
+      const toggleBtn = document.getElementById("toggleHistory");
+      const sidebar = document.getElementById("sidebarHistory");
+      const closeBtn = document.getElementById("closeSidebar");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.add("active");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("active");
+      });
+    });
+  </script>
+</body>
+</html>
