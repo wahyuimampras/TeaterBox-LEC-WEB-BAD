@@ -34,7 +34,6 @@
 
 .nav-links a:hover {
   color: #ffcccb;
-  transform: translateY(-2px);
 }
 
 .nav-links a.active {
@@ -63,12 +62,16 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.users:hover {
+.user:hover {
   color: #ffcccb;
 }
 
 .user.active {
   border-bottom: 2px solid #ffcccb;
+}
+
+.profile-hidden{
+  display: none;
 }
 
 /* Hamburger menu */
@@ -99,5 +102,10 @@
 
   .profile {
     display: none;
+  }
+
+  .profile-hidden{
+    display: block;
+    width: max-content;
   }
 }
