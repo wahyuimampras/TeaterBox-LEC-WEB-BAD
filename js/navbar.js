@@ -5,6 +5,7 @@ function initNavbar() {
   if (hamburger && navLinks) {
     hamburger.addEventListener("click", function () {
       navLinks.classList.toggle("active");
+      Us
     });
 
     // Highlight aktif menu

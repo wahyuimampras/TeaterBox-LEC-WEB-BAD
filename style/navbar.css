@@ -55,6 +55,22 @@
   font-size: 0.9rem;
 }
 
+.user{
+  text-decoration: none;
+  display: block;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.users:hover {
+  color: #ffcccb;
+}
+
+.user.active {
+  border-bottom: 2px solid #ffcccb;
+}
+
 /* Hamburger menu */
 .hamburger {
   display: none;
