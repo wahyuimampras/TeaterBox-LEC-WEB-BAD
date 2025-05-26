@@ -16,7 +16,13 @@
 }
 
 .logo img {
-  width: 120px;
+  width: 180px;
+}
+
+.logo img:hover{
+  transform: scale(1.05);
+  transition: transform ease-out 0.5s;
+  cursor: pointer;
 }
 
 .nav-links {

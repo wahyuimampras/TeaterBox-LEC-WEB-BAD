@@ -20,3 +20,14 @@
   text-decoration: none;
   margin: 0 0.5rem;
 }
+
+.footer a:hover {
+  color: #ffcccb;
+}
+
+@media (max-width:768px){
+  .links{
+    display: flex;
+    flex-direction: column;
+  }
+}
