@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TeaterBox - Profile</title> 
+  <title>TeaterBox - Profile</title>
   <link rel="stylesheet" href="style/profile.css" />
   <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
 </head>
@@ -14,6 +14,10 @@
   <section class="profile-section">
     <div class="profile-container">
       <h1 class="profile-title">User Profile</h1>
+      <div class="profile-photo-container">
+        <img src="asset/poster1.png" alt="Profile Photo" class="profile-photo">
+      </div>
+      <button class="edit-button" id="editProfileBtn">Edit Profile</button>
       <div class="profile-card">
         <div class="profile-item">
           <label>Full Name</label>
@@ -21,7 +25,7 @@
         </div>
         <div class="profile-item">
           <label>Email</label>
-          <input class="profile-value editable" type="email" value="contoh@example.com" disabled>
+          <input class="profile-value editable" type="email" value="putri@example.com" disabled>
         </div>
         <div class="profile-item">
           <label>Date of Birth</label>
@@ -34,9 +38,8 @@
         <div class="profile-item">
           <label>Gender</label>
           <select class="profile-value editable" disabled>
-            <option selected>Male</option>
-            <option>Female</option>
-            <option>Other</option>
+            <option selected>Female</option>
+            <option>Male</option>
           </select>
         </div>
         <div class="profile-item">
@@ -44,8 +47,8 @@
           <textarea class="profile-value editable" rows="2" disabled>Jl. Melati No. 123, Jakarta</textarea>
         </div>
       </div>
-      <button class="edit-button" id="editProfileBtn">Edit Profile</button>
       <button class="history-toggle-button" id="toggleHistory">Watched History</button>
+      <button class="logout-button" id="logoutBtn">Logout</button>
     </div>
   </section>
 
@@ -69,58 +72,17 @@
     </div>
   </div>
 
-  <!-- Footer Section -->
   <div id="footer"></div>
 
-  <script>
-    async function loadHTML(id, file, callback) {
-      const res = await fetch(`masterComponent/${file}`);
-      const text = await res.text();
-      document.getElementById(id).innerHTML = text;
-      if (callback) callback();
-    }
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <img src="" id="popup-image" alt="">
+    <h2 id="popup-title"></h2>
+    <p id="popup-message"></p>
+    <button type="button" id="closeBtn">OK</button>
+  </div>
+  <div class="popup-overlay" id="popup-overlay"></div>
 
-    loadHTML("navbar", "navbar.html", () => {
-      const script = document.createElement("script");
-      script.src = "./js/navbar.js";
-      script.onload = () => initNavbar();
-      document.body.appendChild(script);
-    });
-
-    loadHTML("footer", "footer.html");
-
-    // Edit button logic
-    document.addEventListener("DOMContentLoaded", function () {
-      const container = document.querySelector(".profile-container");
-      const inputs = container.querySelectorAll(".editable");
-      const button = document.getElementById("editProfileBtn");
-
-      let editMode = false;
-
-      button.addEventListener("click", () => {
-        editMode = !editMode;
-        container.classList.toggle("edit-mode");
-
-        inputs.forEach((el) => {
-          el.disabled = !editMode;
-        });
-
-        button.textContent = editMode ? "Save Profile" : "Edit Profile";
-      });
-
-      // Sidebar toggle
-      const toggleBtn = document.getElementById("toggleHistory");
-      const sidebar = document.getElementById("sidebarHistory");
-      const closeBtn = document.getElementById("closeSidebar");
-
-      toggleBtn.addEventListener("click", () => {
-        sidebar.classList.add("active");
-      });
-
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.remove("active");
-      });
-    });
-  </script>
+  <script src="js/profile.js"></script>
 </body>
 </html>
