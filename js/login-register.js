@@ -80,17 +80,23 @@ window.addEventListener("resize", () => {
   }
 });
 
-function openPopup(imageSrc, title, message) {
+function openPopup(imageSrc, title, message, onCloseCallback = null) {
   document.getElementById('popup-image').src = imageSrc;
   document.getElementById('popup-title').innerText = title;
   document.getElementById('popup-message').innerText = message;
   popup.classList.add("open-popup");
   popupOverlay.classList.add("active");
+  popupCallback = onCloseCallback;
 }
 
 function closePopup() {
   popup.classList.remove("open-popup");
   popupOverlay.classList.remove("active");
+
+  if (typeof popupCallback === 'function') {
+    popupCallback(); // Jalankan aksi yang tersimpan
+  }
+  popupCallback = null;
 }
 
 document.getElementById('popup-overlay').addEventListener('click', closePopup);
@@ -118,12 +124,13 @@ document.getElementById('register-form').addEventListener('submit', (e) => {
   } else if (passwordRegist !== confirmPassword) {
     openPopup("./asset/error.png", "Error!", "Password and Confirm Password do not match");
   } else {
-    openPopup("./asset/success.png", "Success!", "Your registration is successful");
-    document.getElementById('register-form').reset();
-    setTimeout(() => {
-      closePopup();
-      showSignInForm();
-    }, 2000);
+    // openPopup("./asset/success.png", "Success!", "Your registration is successful");
+    openPopup("./asset/success.png", "Success!", "Your registration is successful", showSignInForm);
+    // document.getElementById('register-form').reset();
+    // setTimeout(() => {
+    //   closePopup();
+    //   showSignInForm();
+    // }, 2000);
   }
   document.getElementById('register-form').reset();
 });
@@ -139,11 +146,8 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
   } else if (passwordLogin === "") {
     openPopup("./asset/error.png", "Error!", "Password cannot be empty");
   } else {
-    openPopup("./asset/success.png", "Success!", "Login Successful! You will be redirected...");
-    setTimeout(() => {
-      closePopup()
-      window.location.href = "home.html";
-    }, 2000);
+    const goToHome = () => { window.location.href = "./index.html"; };
+    openPopup("./asset/success.png", "Success!", "Login Successful! You will be redirected...", goToHome);
   }
   document.getElementById('login-form').reset();
 });
