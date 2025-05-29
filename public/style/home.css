@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdfdfd;
+  color: #1a1a1a;
+}
+
+/* === SLIDER SECTION === */
+.slider-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 16px;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.slider-container img {
+  width: 100%;
+  height: auto;
+  display: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider Navigation Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s;
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.slider-btn.right {
+  right: 10px;
+}
+
+.slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Slider Dots */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #3498db;
+}
+
+/* === SECTION TITLE === */
+.section-title {
+  color: #4c0d25;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+/* === COMING SOON POSTERS === */
+.coming-soon-wrapper,
+.promo-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.coming-soon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  margin-bottom: 2rem;
+}
+
+.poster-card {
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.poster-card img {
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.poster-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.poster-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Hover Buttons */
+.hover-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  min-width: max-content;
+}
+
+.poster-card:hover .hover-buttons {
+  opacity: 1;
+}
+
+.hover-buttons button {
+  padding: 12px 20px;
+  background-color: #2e86de;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hover-buttons button:hover {
+  background-color: #1b4f72;
+}
+
+/* Blur Background Effect */
+.poster-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.poster-card:hover::after {
+  opacity: 1;
+}
+
+/* Discover More Button */
+.discover-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.discover-btn {
+  background-color: #4c0d25;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.discover-btn:hover {
+  background-color: #a3274e;
+}
+
+/* === CURRENT PROMO SECTION === */
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  margin-bottom: 3rem;
+}
+
+.promo-grid img {
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.promo-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .hover-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .discover-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

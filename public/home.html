@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Home</title> 
+  <link rel="stylesheet" href="style/home.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/auth.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <section class="home-section">
+    <!-- SLIDER -->
+    <div style="background-color: #fdfdfd; padding: 1rem 0;">
+        <div class="slider-wrapper">
+            <div class="slider-container">
+              <img src="asset/slider-img (1).jpg" alt="Slide 1">
+              <img src="asset/slider-img (2).jpg" alt="Slide 2">
+              <img src="asset/slider-img (3).jpg" alt="Slide 3">
+              <img src="asset/slider-img (4).jpg" alt="Slide 4">
+      
+              <button id="prev-btn" class="slider-btn left">❮</button>
+              <button id="next-btn" class="slider-btn right">❯</button>
+            </div>
+            <div class="slider-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+              
+     </div>
+
+    <!-- COMING SOON -->
+    <div style="background-color: #f1c1c1; padding: 1rem 0;">
+        <h2 class="section-title">COMING SOON</h2>
+        <div class="coming-soon-wrapper">
+          <div class="coming-soon-grid">
+            <div class="poster-card">
+              <img src="asset/poster1.png" alt="Poster 1">
+              <div class="hover-buttons">
+                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
+                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+              </div>
+            </div>
+            <div class="poster-card">
+              <img src="asset/poster2.png" alt="Poster 2">
+              <div class="hover-buttons">
+                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
+                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+              </div>
+            </div>
+            <div class="poster-card">
+              <img src="asset/poster3.png" alt="Poster 3">
+              <div class="hover-buttons">
+                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
+                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+              </div>
+            </div>
+            <div class="poster-card">
+              <img src="asset/poster1.png" alt="Poster 4">
+              <div class="hover-buttons">
+                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
+                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="discover-container">
+          <button class="btn discover-btn" onclick="window.location.href='show.html'">Discover More</button>
+        </div>
+    
+    </div>
+
+    <!-- CURRENT PROMO -->
+    <h2 class="section-title">CURRENT PROMO</h2>
+    <div class="promo-wrapper">
+      <div class="promo-grid">
+        <img src="asset/promo (1).jpg" alt="Promo 1">
+        <img src="asset/promo (2).jpg" alt="Promo 2">
+        <img src="asset/promo (3).jpg" alt="Promo 3">
+        <img src="asset/promo (4).jpg" alt="Promo 4">
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script>
+    async function loadHTML(id, file, callback) {
+      const res = await fetch(`masterComponent/${file}`);
+      const text = await res.text();
+      document.getElementById(id).innerHTML = text;
+      if (callback) callback();
+    }
+
+    loadHTML("navbar", "navbar.html", () => {
+      const script = document.createElement("script");
+      script.src = "./js/navbar.js";
+      script.onload = () => initNavbar();
+      document.body.appendChild(script);
+    });
+
+    loadHTML("footer", "footer.html");
+  </script>
+
+    <script>
+    $(function() {
+        let currentIndex = 0;
+        const images = $('.slider-container img');
+        const dots = $('.dot');
+        const totalImages = images.length;
+
+        function showImage(index) {
+        images.hide();
+        images.eq(index).fadeIn(500);
+        dots.removeClass('active');
+        dots.eq(index).addClass('active');
+        }
+
+        function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showImage(currentIndex);
+        }
+
+        // Initial show
+        showImage(currentIndex);
+
+        // Button navigation
+        $('#prev-btn').on('click', () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showImage(currentIndex);
+        });
+
+        $('#next-btn').on('click', () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showImage(currentIndex);
+        });
+
+        // Dot navigation
+        $('.dot').on('click', function() {
+        currentIndex = $(this).index();
+        showImage(currentIndex);
+        });
+
+        // Auto-play every 3 seconds
+        setInterval(nextImage, 3000);
+    });
+    </script>
+</body>
+</html>

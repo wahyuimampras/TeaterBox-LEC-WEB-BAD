@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Details Ticket</title>
+  <link rel="stylesheet" href="./style/payment.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
+  <script src="./js/auth.js"></script>
+</head>
+<body>
+      <div id="navbar"></div>
+  <h1 class="title">Details Ticket</h1>
+  <div class="ticket-container">
+    <div class="ticket">
+      <div class="left-notch"></div>
+      <div class="right-notch"></div>
+
+      <div class="ticket-content">
+        <div class="ticket-left">
+          <img src="./asset/poster1.png" alt="Poster" class="poster">
+        </div>
+
+        <div class="ticket-info">
+          <div class="ticket-header">
+            <div>
+              <h2>Mary Poppins</h2>
+              <p>Ciputra Artpreneur, Jakarta Selatan</p>
+              <p>Maret 18th, 2025 at 07.00 - 09.00</p>
+              <p>By Jaran Goyang Community</p>
+              <div class="quantity-selector">
+                <button onclick="decreaseQty()">-</button>
+                <input type="text" id="qty" value="2" readonly>
+                <button onclick="increaseQty()">+</button>
+              </div>
+            </div>
+            <div class="class-badge">GOLD</div>
+          </div>
+
+          <div class="ticket-details">
+            <div class="row"><span>Order Number</span><span>OD18052025025 <button class="copy-btn" onclick="copyText()">📋</button></span></div>
+            <div class="row"><span>Gold Seat</span><span id="seat-price">Rp1.800.000</span></div>
+            <div class="row"><span>Administration Fee</span><span id="admin-fee">Rp0</span></div>
+            <div class="row"><span>Tax</span><span id="tax">Rp0</span></div>
+            <div class="row"><span>Payment Method</span>
+              <select id="payment-method">
+                <option>GOPAY</option>
+                <option>OVO</option>
+                <option>DANA</option>
+                <option>BCA</option>
+              </select>
+            </div>
+           <div class="row total"><span>Total Price</span><span id="total">Rp0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="pay-button">Pay Now →</button>
+  </div>
+</div>
+<div id="footer"></div>
+
+
+  <script src="./js/payment.js"></script>
+</body>
+</html>

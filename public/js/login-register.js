@@ -10,6 +10,8 @@ const popupOverlay = document.getElementById("popup-overlay");
 
 let currentForm = 'sign-in';
 
+let popupCallback = null;
+
 function resetInlineStyle() {
   document.querySelector('.sign-in-container').style = "";
   document.querySelector('.sign-up-container').style = "";
@@ -80,17 +82,23 @@ window.addEventListener("resize", () => {
   }
 });
 
-function openPopup(imageSrc, title, message) {
+function openPopup(imageSrc, title, message, onCloseCallback = null) {
   document.getElementById('popup-image').src = imageSrc;
   document.getElementById('popup-title').innerText = title;
   document.getElementById('popup-message').innerText = message;
   popup.classList.add("open-popup");
   popupOverlay.classList.add("active");
+  popupCallback = onCloseCallback;
 }
 
 function closePopup() {
   popup.classList.remove("open-popup");
   popupOverlay.classList.remove("active");
+
+  if (typeof popupCallback === 'function') {
+    popupCallback(); // Jalankan aksi yang tersimpan
+  }
+  popupCallback = null;
 }
 
 document.getElementById('popup-overlay').addEventListener('click', closePopup);
@@ -104,27 +112,46 @@ document.getElementById('register-form').addEventListener('submit', (e) => {
   let confirmPassword = document.getElementById('confirm-password').value;
 
   if (name === "") {
-    openPopup("../asset/error.png", "Error!", "Name cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Name cannot be empty");
   } else if (name.length < 5) {
-    openPopup("../asset/error.png", "Error!", "Name cannot be less than 5 characters");
+    openPopup("./asset/error.png", "Error!", "Name cannot be less than 5 characters");
   } else if (emailRegist === "") {
-    openPopup("../asset/error.png", "Error!", "Email cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Email cannot be empty");
   } else if (passwordRegist === "") {
-    openPopup("../asset/error.png", "Error!", "Password cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Password cannot be empty");
   } else if (passwordRegist.length < 8) {
-    openPopup("../asset/error.png", "Error!", "Password cannot be less than 8 characters");
+    openPopup("./asset/error.png", "Error!", "Password cannot be less than 8 characters");
   } else if (confirmPassword === "") {
-    openPopup("../asset/error.png", "Error!", "Confirm Password cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Confirm Password cannot be empty");
   } else if (passwordRegist !== confirmPassword) {
-    openPopup("../asset/error.png", "Error!", "Password and Confirm Password do not match");
+    openPopup("./asset/error.png", "Error!", "Password and Confirm Password do not match");
   } else {
-    openPopup("../asset/success.png", "Success!", "Your registration is successful");
-    // switch ke form sign in setelah sukses
-    setTimeout(() => {
-      closePopup();
-      showSignInForm();
-    }, 2000);
+    // Kirim data ke register.php
+    fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ // Kirim sebagai string JSON
+        name: name,
+        email: emailRegist,
+        password: passwordRegist
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+      if (data.status === "success") {
+        // Aksi `showSignInForm` akan dijalankan saat popup ditutup.
+        openPopup("./asset/success.png", "Success!", data.message, showSignInForm);
+      } else {
+          openPopup("./asset/error.png", "Error!", data.message);
+        }
+      })
+      .catch(error => {
+        openPopup("./asset/error.png", "Error!", "There is error happening");
+      });
   }
+  // document.getElementById('register-form').reset();
 });
 
 document.getElementById('login-form').addEventListener('submit', (e) => {
@@ -134,13 +161,36 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
   let passwordLogin = document.getElementById('password-login').value;
 
   if (emailLogin === "") {
-    openPopup("../asset/error.png", "Error!", "Email cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Email cannot be empty");
   } else if (passwordLogin === "") {
-    openPopup("../asset/error.png", "Error!", "Password cannot be empty");
+    openPopup("./asset/error.png", "Error!", "Password cannot be empty");
   } else {
-    openPopup("../asset/success.png", "Success!", "Login Successful! You will be redirected...");
-    setTimeout(() => {
-      window.location.href = "home.html";
-    }, 2000);
+    // Kirim data ke login.php
+    fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ // Kirim sebagai string JSON
+        email: emailLogin,
+        password: passwordLogin
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+      if (data.status === "success" && data.token) {
+        localStorage.setItem('authToken', data.token);
+        // Buat fungsi untuk pindah halaman
+        const goToHome = () => { window.location.href = "home.html"; };
+        // Aksi `goToHome` akan dijalankan saat popup ditutup.
+        openPopup("./asset/success.png", "Success!", data.message, goToHome);
+      } else {
+          openPopup("./asset/error.png", "Error!", data.message);
+        }
+      })
+      .catch(error => {
+        openPopup("./asset/error.png", "Error!", "There is error happening");
+      });
   }
+  // document.getElementById('login-form').reset();
 });

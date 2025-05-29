@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Show</title>
+  <link rel="stylesheet" href="style/ticket.css" />
+  <script src="./js/auth.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <section class="booking-container">
+    <h1 class="title">Booking Ticket</h1>
+
+    <div class="progress-bar">
+      <div class="step active"><div class="icon">🎟️</div><p>Choose Seat</p></div>
+      <div class="line"></div>
+      <div class="step"><div class="icon">💰</div><p>Payment</p></div>
+      <div class="line"></div>
+      <div class="step"><div class="icon">✔️</div><p>Your Ticket</p></div>
+    </div>
+
+    <div class="main-content">
+      <div class="price-list">
+        <div class="card"><h3>VIP – Rp1.200.000</h3><p>Best front-row seats + exclusive merchandise + meet & greet.</p></div>
+        <div class="card"><h3>Gold – Rp900.000</h3><p>Best view from the center of the theater.</p></div>
+        <div class="card"><h3>Silver – Rp650.000</h3><p>Good view from the back rows.</p></div>
+      </div>
+
+      <div class="seat-area">
+        <div class="screen">LAYAR</div>
+        <div class="layout">
+          <div class="seat-column" id="leftSeats"></div>
+          <div class="seat-column" id="centerSeats"></div>
+          <div class="seat-column" id="rightSeats"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <div id="totalSection" class="total-section" style="display: none;">
+        <p id="totalInfo">Total: Rp0</p>
+      </div>
+      <button id="checkoutBtn" class="checkout-button" style="display: none;"><a href="./payment.html">Checkout</a></button>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="js/ticket.js"></script>
+</body>
+</html>
