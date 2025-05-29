@@ -151,7 +151,7 @@ document.getElementById('register-form').addEventListener('submit', (e) => {
         openPopup("./asset/error.png", "Error!", "There is error happening");
       });
   }
-  // document.getElementById('register-form').reset();
+  document.getElementById('register-form').reset();
 });
 
 document.getElementById('login-form').addEventListener('submit', (e) => {
@@ -192,5 +192,5 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
         openPopup("./asset/error.png", "Error!", "There is error happening");
       });
   }
-  // document.getElementById('login-form').reset();
+  document.getElementById('login-form').reset();
 });
