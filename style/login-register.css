@@ -369,12 +369,18 @@ input {
 
 
 @media (max-width: 768px) {
+  body{
+    font-size: 90%;
+  }
   .overlay-container {
     display: none;
   }
 
+  form{
+    padding: 0 40px;
+  }
   .container {
-    width: 60%;
+    width: 75%;
   }
 
   .form-container {
