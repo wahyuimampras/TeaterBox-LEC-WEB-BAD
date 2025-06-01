@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const password = document.getElementById('password-register').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    // Menggunakan validasi per-field dari kode asli Anda
     if (name === "") {
         openPopup("./asset/error.png", "Error!", "Name cannot be empty");
     } else if (name.length < 5) {
@@ -157,7 +156,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const email = document.getElementById('email-login').value.trim();
     const password = document.getElementById('password-login').value;
 
-    // Menggunakan validasi per-field dari kode asli Anda
     if (email === "") {
         openPopup("./asset/error.png", "Error!", "Email cannot be empty");
     } else if (password === "") {
@@ -169,7 +167,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if (foundUser) {
             sessionStorage.setItem('currentUser', JSON.stringify(foundUser));
             const goToHome = () => { window.location.href = "./index.html"; };
-            openPopup("./asset/success.png", "Success!", "Login Successful! You will be redirected...", goToHome);
+            openPopup("./asset/success.png", "Success!", "Login Successful! You will be redirected to Home...", goToHome);
         } else {
             openPopup("./asset/error.png", "Error!", "Invalid email or password.");
         }
