@@ -20,6 +20,7 @@ body {
   background-color: #ffffff; 
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  min-height: 100vh;
 }
 
 .section-title {
@@ -91,12 +92,12 @@ body {
 }
 
 .purchase-options label:hover {
-  color: #4c0d25;
+  color: #4A0012;
 }
 
 .purchase-options input[type="radio"] {
   margin-right: 0.6rem;
-  accent-color: #4c0d25;
+  accent-color: #72031F;
   transform: scale(1.1);
 }
 
@@ -120,7 +121,7 @@ body {
   width: 100%; 
   max-width: 320px;
   margin: 0 auto;
-  background-color: #4c0d25; 
+  background-color: #72031F; 
   color: #fff;
   font-weight: 600;
   font-size: 1.05rem;
@@ -134,7 +135,7 @@ body {
 }
 
 .btn-proceed:hover {
-  background-color: #a3274e; 
+  background-color: #4A0012; 
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }

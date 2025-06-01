@@ -124,13 +124,7 @@ document.getElementById('register-form').addEventListener('submit', (e) => {
   } else if (passwordRegist !== confirmPassword) {
     openPopup("./asset/error.png", "Error!", "Password and Confirm Password do not match");
   } else {
-    // openPopup("./asset/success.png", "Success!", "Your registration is successful");
     openPopup("./asset/success.png", "Success!", "Your registration is successful", showSignInForm);
-    // document.getElementById('register-form').reset();
-    // setTimeout(() => {
-    //   closePopup();
-    //   showSignInForm();
-    // }, 2000);
   }
   document.getElementById('register-form').reset();
 });

@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
     container.classList.toggle("edit-mode");
     inputs.forEach(el => el.disabled = !editMode);
     editBtn.textContent = editMode ? "Save Profile" : "Edit Profile";
+    if(!editMode){
+      openPopup('./asset/success.png', 'Success', 'Profile updated successfully!');
+    }
+
   });
 
   // Sidebar History toggle
@@ -50,29 +54,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const closePopupBtn = document.getElementById('closeBtn');
 
   // Fungsi buka popup
-  function openPopup(imageSrc, title, message) {
+  function openPopup(imageSrc, title, message, callback = null) {
     document.getElementById('popup-image').src = imageSrc;
     document.getElementById('popup-title').innerText = title;
     document.getElementById('popup-message').innerText = message;
+    popupCallback = callback;
     popup.classList.add("open-popup");
     popupOverlay.classList.add("active");
   }
 
-  // Fungsi tutup popup
   function closePopup() {
     popup.classList.remove("open-popup");
     popupOverlay.classList.remove("active");
+    if (typeof popupCallback === 'function') {
+        popupCallback();
+    }
+    popupCallback = null;
   }
 
-  popupOverlay.addEventListener('click', closePopup);
-  closePopupBtn.addEventListener('click', () => {
-    closePopup();
-    // Redirect ke halaman login setelah popup tutup
-    window.location.href = "login-register.html";
-  });
+    closePopupBtn.addEventListener('click', closePopup);
+    popupOverlay.addEventListener('click', closePopup);  
 
   // Logout dengan popup
   document.getElementById("logoutBtn").addEventListener("click", () => {
-    openPopup("./asset/success.png", "Logout", "You have been logged out successfully.");
+    const goToLogin = () => { window.location.href = "./login-register.html"; };
+    openPopup("./asset/success.png", "Logout", "You have been logged out successfully.", goToLogin);
   });
 });

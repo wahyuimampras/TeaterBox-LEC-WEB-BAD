@@ -10,6 +10,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
   background-color: #fdfdfd;
+  overflow-x: hidden;
 }
 
 
@@ -139,7 +140,7 @@ body {
 
 .card-buttons button {
   padding: 12px 20px; 
-  background-color: #2e86de; 
+  background-color: #72031F; 
   border: none;
   border-radius: 8px;
   color: white;
@@ -151,7 +152,7 @@ body {
 }
 
 .card-buttons button:hover {
-  background-color: #1b4f72; 
+  background-color: #4A0012; 
 }
 
 .watch-card::after {

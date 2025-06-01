@@ -12,6 +12,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
+  overflow-x: hidden;
 }
 
 .show-section::before {
@@ -31,6 +32,7 @@ body {
   background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
+  min-height: 100vh;
 }
 
 .show-header {
@@ -118,7 +120,7 @@ body {
 }
 
 .card-buttons button:hover {
-  background-color: #a3274e;
+  background-color: #4A0012;
 }
 
 /* Opsional: efek blur latar belakang saat hover */

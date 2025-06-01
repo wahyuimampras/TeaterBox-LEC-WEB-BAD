@@ -112,9 +112,13 @@ body {
   margin-top: 1.5rem;
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  background-color: maroon;
+  background-color: #72031F;
   color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.pay-button:hover{
+  background-color: #4A0012;
 }
