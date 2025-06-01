@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Confirm Payment</title>
+  <link rel="stylesheet" href="./style/payment.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div id="navbar"></div>
+  
+  <h1 class="title">Confirm Your Payment</h1>
+
+  <div class="ticket-container">
+    <div class="ticket">
+      <div class="left-notch"></div>
+      <div class="right-notch"></div>
+
+      <div class="ticket-content">
+        <div class="ticket-left">
+          <img src="./asset/poster1.png" alt="Movie Poster" class="poster" id="item-poster"> 
+        </div>
+
+        <div class="ticket-info">
+          <div class="ticket-header">
+            <div>
+              <h2 id="item-title">Loading Item...</h2>
+              <p id="purchase-type-display">Purchase Type: Loading...</p> 
+              <p>Provider: TeaterBox Digital Services</p>
+              </div>
+            </div>
+
+          <div class="ticket-details">
+            <div class="row"><span>Order Number</span><span id="order-number">TBXWD-062025-001</span></div>
+            <div class="row"><span>Item Price</span><span id="item-base-price">Rp0</span></div>
+            <div class="row"><span>Administration Fee</span><span id="admin-fee">Rp0</span></div>
+            <div class="row"><span>Tax (11%)</span><span id="tax">Rp0</span></div>
+            <div class="row"><span>Payment Method</span>
+              <select id="payment-method">
+                <option value="GOPAY">GOPAY</option>
+                <option value="OVO">OVO</option>
+                <option value="DANA">DANA</option>
+                <option value="BCA">BCA</option>
+              </select>
+            </div>
+           <div class="row total"><span>Total Price</span><span id="total-price-display">Rp0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="pay-button" id="pay-now-btn">Pay Now &rarr;</button>
+  </div>
+</div>
+<div id="footer"></div>
+
+  <script src="./js/payment-watch.js"></script>
+</body>
+</html>
