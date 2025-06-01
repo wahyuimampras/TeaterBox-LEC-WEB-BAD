@@ -10,6 +10,11 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #fdfdfd;
   color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+.home-section{
+  min-height: 100vh;
 }
 
 /* === SLIDER SECTION === */
