@@ -154,15 +154,21 @@ body {
 
 .checkout-button {
   padding: 10px 20px;
-  background-color: maroon;
+  background-color: #72031F;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   text-decoration: none;
 }
-#a{
+
+.checkout-button a{
     text-decoration: none;
+    color: white;
+}
+
+.checkout-button:hover{
+  background-color: #4A0012;
 }
 
 .dot.vip {
