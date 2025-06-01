@@ -381,6 +381,7 @@ input {
   }
   .container {
     width: 75%;
+    min-height: 600px;
   }
 
   .form-container {
