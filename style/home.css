@@ -81,7 +81,7 @@ body {
 }
 
 .dot.active {
-  background-color: #3498db;
+  background-color: #a3274e;
 }
 
 /* === SECTION TITLE === */
@@ -156,7 +156,7 @@ body {
 
 .hover-buttons button {
   padding: 12px 20px;
-  background-color: #2e86de;
+  background-color: #a3274e;
   border: none;
   border-radius: 8px;
   color: white;
@@ -167,7 +167,7 @@ body {
 }
 
 .hover-buttons button:hover {
-  background-color: #1b4f72;
+  background-color: #73102f;
 }
 
 /* Blur Background Effect */
