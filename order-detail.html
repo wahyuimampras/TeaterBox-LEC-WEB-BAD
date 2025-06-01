@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Order Details</title>
+  <link rel="stylesheet" href="style/order-detail.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <section class="order-detail-section">
+    <h2 class="section-title">Confirm Your Order</h2>
+    <div class="order-container">
+      <div class="order-item-poster">
+        <img src="./asset/poster1.png" alt="Movie Poster"> 
+      </div>
+      <div class="order-item-info">
+        <h3 id="movie-title-display">Movie Title Alpha</h3> 
+        <p class="synopsis">
+          This is a brief and engaging synopsis of "Movie Title Alpha." 
+          It tells the story of an unexpected adventure that will keep you on the edge of your seat. 
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        
+        <form action="payment-watch.html" method="GET">
+          <div class="purchase-options">
+            <h4>Choose Purchase Type:</h4>
+            <label>
+              <input type="radio" name="purchaseInfo" value="Rent_25000" data-display-price="Rp 25.000" checked> 
+              Rent (Rp 25.000)
+            </label>
+            <label>
+              <input type="radio" name="purchaseInfo" value="Buy_100000" data-display-price="Rp 100.000"> 
+              Buy (Rp 100.000)
+            </label>
+          </div>
+
+          <div class="price-details">
+            <p>Price: <span id="item-price">Rp 25.000</span></p>
+          </div>
+
+          <input type="hidden" name="title" id="form-movie-title" value=""> 
+          
+          <button type="submit" class="btn-proceed">Proceed to Payment</button>
+        </form>
+        </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script>
+    async function loadHTML(id, file, callback) {
+      try {
+        const res = await fetch(`masterComponent/${file}`);
+        if (!res.ok) {
+          throw new Error(`Failed to load ${file}: ${res.status} ${res.statusText}`);
+        }
+        const text = await res.text();
+        const element = document.getElementById(id);
+        if (element) {
+          element.innerHTML = text;
+        } else {
+          console.error(`Element with id '${id}' not found for ${file}.`);
+        }
+        if (callback) callback();
+      } catch (error) {
+        console.error(`Error loading ${file}:`, error);
+      }
+    }
+
+    loadHTML("navbar", "navbar.html", () => {
+      const script = document.createElement("script");
+      script.src = "./js/navbar.js";
+      script.onload = () => {
+        if (typeof initNavbar === 'function') {
+          initNavbar();
+        } else {
+          console.error('initNavbar function not found.');
+        }
+      };
+      document.body.appendChild(script);
+    });
+
+    loadHTML("footer", "footer.html");
+
+    const purchaseInfoRadios = document.querySelectorAll('input[name="purchaseInfo"]');
+    const itemPriceDisplaySpan = document.getElementById('item-price');
+    const formMovieTitleInputElement = document.getElementById('form-movie-title');
+    const movieTitleDisplayElement = document.getElementById('movie-title-display');
+
+    if (movieTitleDisplayElement && formMovieTitleInputElement) {
+        formMovieTitleInputElement.value = movieTitleDisplayElement.textContent.trim();
+    }
+
+    purchaseInfoRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (itemPriceDisplaySpan && this.dataset.displayPrice) {
+          itemPriceDisplaySpan.textContent = this.dataset.displayPrice;
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
