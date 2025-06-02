@@ -65,9 +65,27 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const card = button.closest(".show-card");
       const title = card.querySelector("h3").innerText;
-      // Redirect ke halaman trailer dengan query string
       window.location.href = `trailer.html?title=${encodeURIComponent(title)}`;
     });
   });
 });
+window.addEventListener("DOMContentLoaded", () => {
+  const buyButtons = document.querySelectorAll('.buy-btn');
 
+  buyButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const card = e.target.closest('.show-card');
+
+      const title = card.querySelector('h3')?.innerText || 'Unknown Title';
+      const poster = card.querySelector('img')?.src || '';
+
+      const showData = {
+        title,
+        poster
+      };
+
+      localStorage.setItem('selectedMovie', JSON.stringify(showData));
+      window.location.href = 'ticket.html';
+    });
+  });
+});
