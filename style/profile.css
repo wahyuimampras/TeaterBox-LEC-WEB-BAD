@@ -50,7 +50,6 @@ body {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #72031F;
   display: inline-block;
 }
 

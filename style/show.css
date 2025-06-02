@@ -11,6 +11,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
   overflow-x: hidden;
+  background-color: #EFE4D2;
 }
 
 .show-section::before {
@@ -25,7 +26,7 @@ body {
 }
 .show-section {
   padding: 2rem;
-  background-image: url('../asset/background.png');
+  /* background-image: url('../asset/background.png'); */
   backdrop-filter: transparent;
   background-size: auto;
   background-repeat: no-repeat;
@@ -48,31 +49,42 @@ body {
   margin-top: 1rem;
 }
 
+.sort-box label {
+  margin-right: 0.5rem;
+  color: #333;
+}
+
+.sort-box select {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 .show-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(4,1fr);
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
 }
 
 .show-card {
   position: relative;
-  width: 250px;
   padding: 15px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px gray;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   text-align: center;
-  font-family: sans-serif;
 }
 
 .show-card img {
-  max-width: 230px;
-  width: max-content;
+  width: 100%;
+  height: 350px;
   border-radius: 10px;
   margin-bottom: 10px;
+  border: 1px solid gray;
 }
 
 .show-card h3 {
@@ -144,8 +156,6 @@ body {
 }
 
 
-
-
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -153,6 +163,10 @@ body {
 
   .show-header h2 {
     font-size: 1.5rem;
+  }
+
+  .show-grid{
+    grid-template-columns: repeat(2,1fr);
   }
 
   .show-card {

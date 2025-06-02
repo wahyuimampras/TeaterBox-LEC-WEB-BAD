@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeaterBox - Trailer</title> 
+  <link rel="stylesheet" href="style/trailer.css" />
+  <link rel="shortcut icon" href="asset/Favicon.png" type="image/x-icon">
+  <script src="js/auth-check.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <!-- buat section sendiri khusus untuk halaman kalian -->
+  <section class="wacth-trailer">
+  <div class="video-container">
+    <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/vEtR7S7zMmI?si=nQhUOxU9vaZ-qzHZ" 
+    title="Mary Poppins Returns Trailer" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Detail Cerita -->
+  <div class="story-detail">
+    <h2>Mary Poppins - Sinopsis</h2>
+    <p>
+      Setelah kehilangan istri tercinta, Michael Banks kini tinggal bersama ketiga anaknya dan dibantu oleh Jane Banks, adiknya.
+      Hidup mereka mulai kacau hingga kemunculan Mary Poppins, pengasuh ajaib dari masa lalu yang kembali untuk membawa keajaiban.
+      Dengan bantuan teman lamanya, Jack si penyala lampu jalan, Mary membawa anak-anak ke dalam dunia penuh petualangan, fantasi, dan lagu-lagu yang memikat.
+    </p>
+    <p>
+      Film ini merupakan kelanjutan dari kisah klasik legendaris, menampilkan nilai-nilai keluarga, harapan, dan imajinasi tanpa batas.
+    </p>
+  </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script>
+    async function loadHTML(id, file, callback) {
+    const res = await fetch(`masterComponent/${file}`);
+    const text = await res.text();
+    document.getElementById(id).innerHTML = text;
+    if (callback) callback();
+  }
+
+  loadHTML("navbar", "navbar.html", () => {
+    const script = document.createElement("script");
+    script.src = "./js/navbar.js";
+    script.onload = () => initNavbar();
+    document.body.appendChild(script);
+  });
+
+  loadHTML("footer", "footer.html");
+  </script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
-  background-color: #fdfdfd;
+  background-color: #EFE4D2;
   overflow-x: hidden;
 }
 
@@ -27,7 +27,7 @@ body {
 
 .watch-section {
   padding: 2rem;
-  background-image: url('../asset/background.png'); 
+  /* background-image: url('../asset/background.png');  */
   backdrop-filter: transparent; 
   background-size: cover; 
   background-repeat: no-repeat;
@@ -62,38 +62,34 @@ body {
   padding: 0.3rem 0.5rem;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-family: 'Poppins', sans-serif;
 }
+
 
 .watch-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  grid-template-columns: repeat(4,1fr);
+  justify-content: center;
   gap: 20px;
-  padding: 0 20px; 
-  max-width: 1200px; 
-  margin: 0 auto; 
+  padding: 20px;
 }
 
 .watch-card {
-  position: relative; 
+  position: relative;
   padding: 15px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px gray;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; 
+  overflow: hidden;
   text-align: center;
-  font-family: 'Poppins', sans-serif; 
 }
 
 .watch-card img {
-  max-width: 100%; 
-  height: auto; 
-  max-height: 300px; 
-  object-fit: cover; 
+  width: 100%;
+  height: 350px;
   border-radius: 10px;
   margin-bottom: 10px;
-  transition: transform 0.3s ease; 
+  border: 1px solid gray;
 }
 
 .watch-card h3 {
@@ -176,13 +172,13 @@ body {
   .watch-header h2 {
     font-size: 1.5rem; 
   }
+  
+  .watch-grid{
+    grid-template-columns: repeat(2,1fr);
+  }
 
   .watch-card {
     padding: 10px; 
-  }
-  
-  .watch-card img {
-    max-height: 250px; 
   }
 
   .card-buttons button {
