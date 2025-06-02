@@ -111,11 +111,38 @@ document.addEventListener('DOMContentLoaded', () => {
   if (paymentMethodSelect) {
     paymentMethodSelect.addEventListener("change", updateTotal);
   }
+
+  const popup = document.getElementById("popup");
+  const popupOverlay = document.getElementById("popup-overlay");
+  function openPopup(imageSrc, title, message, onCloseCallback = null) {
+    document.getElementById('popup-image').src = imageSrc;
+    document.getElementById('popup-title').innerText = title;
+    document.getElementById('popup-message').innerText = message;
+    popup.classList.add("open-popup");
+    popupOverlay.classList.add("active");
+    popupCallback = onCloseCallback;
+  }
+
+  function closePopup() {
+    popup.classList.remove("open-popup");
+    popupOverlay.classList.remove("active");
+
+    if (typeof popupCallback === 'function') {
+      popupCallback(); 
+    }
+    popupCallback = null;
+  }
+
+  document.getElementById('popup-overlay').addEventListener('click', closePopup);
+  document.getElementById('closeBtn').addEventListener('click', closePopup);
+
+
   
   if (payNowButton) {
     payNowButton.addEventListener("click", () => {
-      alert(`Simulating payment...\nItem: ${currentItemTitle} (${currentPurchaseType})\nTotal: ${totalPriceDisplay.textContent}\nMethod: ${paymentMethodSelect.value}\n\nThank you! You will be redirected.`);
-      window.location.href = "index.html"; 
+      // alert(`Simulating payment...\nItem: ${currentItemTitle} (${currentPurchaseType})\nTotal: ${totalPriceDisplay.textContent}\nMethod: ${paymentMethodSelect.value}\n\nThank you! You will be redirected.`);
+        const goToHome = () => { window.location.href = "./index.html"; };
+        openPopup("./asset/success.png", "Success!", "Your Payment is Success", goToHome);
     });
   }
 
