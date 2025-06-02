@@ -13,7 +13,6 @@
   <div id="navbar"></div>
 
   <section class="home-section">
-    <!-- SLIDER -->
     <div style="background-color: #FAF1E6; padding: 1rem 0;">
         <div class="slider-wrapper">
             <div class="slider-container">
@@ -35,7 +34,6 @@
               
      </div>
 
-    <!-- COMING SOON -->
     <div style="background-color: #f1c1c1; padding: 1rem 0;">
         <h2 class="section-title">COMING SOON</h2>
         <div class="coming-soon-wrapper">
@@ -43,29 +41,29 @@
             <div class="poster-card">
               <img src="asset/poster1.png" alt="Poster 1">
               <div class="hover-buttons">
-                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
-                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+                <button onclick="watchTrailer('Mary Poppins')">Watch Trailer</button>
+                <button onclick="buyTicket('Mary Poppins', 'asset/poster1.png')">Buy Ticket</button>
               </div>
             </div>
             <div class="poster-card">
               <img src="asset/poster2.png" alt="Poster 2">
               <div class="hover-buttons">
-                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
-                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+                <button onclick="watchTrailer('Ordinary Days')">Watch Trailer</button>
+                <button onclick="buyTicket('Ordinary Days', 'asset/poster2.png')">Buy Ticket</button>
               </div>
             </div>
             <div class="poster-card">
               <img src="asset/poster3.png" alt="Poster 3">
               <div class="hover-buttons">
-                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
-                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+                <button onclick="watchTrailer('High School')">Watch Trailer</button>
+                <button onclick="buyTicket('High School', 'asset/poster3.png')">Buy Ticket</button>
               </div>
             </div>
             <div class="poster-card">
               <img src="asset/poster4.png" alt="Poster 4">
               <div class="hover-buttons">
-                <button class="btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
-                <button class="btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
+                <button onclick="watchTrailer('Come What May')">Watch Trailer</button>
+                <button onclick="buyTicket('Come What May', 'asset/poster4.png')">Buy Ticket</button>
               </div>
             </div>
           </div>
@@ -77,7 +75,6 @@
     
     </div>
 
-        <!-- WATCH PREVIOUS SHOW -->
         <div style="background-color: #f1c1c1; padding: 1rem 0;">
         <h2 class="section-title">WATCH PREVIOUS SHOW</h2>
         <div class="coming-soon-wrapper">
@@ -119,7 +116,6 @@
     </div>
 
 
-    <!-- CURRENT PROMO -->
     <h2 class="section-title">CURRENT PROMO</h2>
     <div class="promo-wrapper">
       <div class="promo-grid">
@@ -193,6 +189,20 @@
         // Auto-play every 3 seconds
         setInterval(nextImage, 3000);
     });
+    </script>
+    <script>
+        function watchTrailer(title) {
+            window.location.href = `trailer.html?title=${encodeURIComponent(title)}`;
+        }
+
+        function buyTicket(title, poster) {
+            const movieData = {
+                title: title,
+                poster: poster
+            };
+            localStorage.setItem('selectedMovie', JSON.stringify(movieData));
+            window.location.href = 'ticket.html';
+        }
     </script>
 </body>
 </html>
