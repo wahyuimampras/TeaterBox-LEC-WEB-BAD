@@ -17,15 +17,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const sortSelect = document.getElementById("sort");
   const showGrid = document.querySelector(".show-grid");
 
-  // Fungsi untuk membersihkan teks tanggal dari "18th", "21st", dsb
+
   function cleanDate(text) {
-    const cleaned = text.replace(/(\d+)(st|nd|rd|th)/g, "$1"); // hapus st, nd, rd, th
+    const cleaned = text.replace(/(\d+)(st|nd|rd|th)/g, "$1");
     return new Date(cleaned);
   }
 
-  // Fungsi untuk membersihkan teks harga seperti "IDR100.000"
+
   function cleanPrice(text) {
-    return parseInt(text.replace(/[^\d]/g, ""), 10); // hilangkan semua non-digit
+    return parseInt(text.replace(/[^\d]/g, ""), 10); 
   }
 
   sortSelect.addEventListener("change", () => {
@@ -54,8 +54,20 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Render ulang kartu yang sudah diurutkan
     showGrid.innerHTML = "";
     sortedCards.forEach(card => showGrid.appendChild(card));
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const trailerButtons = document.querySelectorAll(".trailer-btn");
+
+  trailerButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".show-card");
+      const title = card.querySelector("h3").innerText;
+      // Redirect ke halaman trailer dengan query string
+      window.location.href = `trailer.html?title=${encodeURIComponent(title)}`;
+    });
+  });
+});
+
