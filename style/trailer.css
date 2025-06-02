@@ -62,17 +62,27 @@ body {
 .buy-btn {
   margin-top: 30px;
   padding: 10px 20px;
-  background-color: maroon;
+  background-color: #72031F;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   text-decoration: none;
+  font-size: 16px;
+  width: 150px;
+  height: 40px;
+}
+
+.buy-btn:hover{
+  background-color: #4A0012;
 }
 
 @media (max-width:768px){
   .video-container {
-      height: 50vh;
+    height: 50vh;
 
-}
+  }
+  .buy-btn {
+    width: 100%;
+  }
 }
