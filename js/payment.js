@@ -36,37 +36,26 @@ function getAdminFeePerTicket(method) {
   }
 }
 
-function updateTotal(qty = parseInt(qtyInput.value)) {
+function updateTotal(qty = seatQty) {
   const selectedMethod = paymentMethod.value;
   const adminFeePerTicket = getAdminFeePerTicket(selectedMethod);
-  const totalTicketPrice = seatPrice * qty;
-  const tax = Math.round(totalTicketPrice * 0.11);
   const adminFee = adminFeePerTicket * qty;
-  const total = totalTicketPrice + tax + adminFee;
+  const tax = Math.round(totalSeatPrice * 0.11);
+  const total = totalSeatPrice + adminFee + tax;
 
   adminFeeRow.textContent = "Rp" + adminFee.toLocaleString("id-ID");
   taxRow.textContent = "Rp" + tax.toLocaleString("id-ID");
   totalRow.textContent = "Rp" + total.toLocaleString("id-ID");
+
+  document.getElementById("seat-price").textContent = "Rp" + totalSeatPrice.toLocaleString("id-ID");
 }
 
 function increaseQty() {
-  let qty = parseInt(qtyInput.value);
-  if (qty < 5) {
-    qty++;
-    qtyInput.value = qty;
-    updateTotal(qty);
-  } else {
-    alert("Maksimal pembelian 5 tiket.");
-  }
+  alert("Jumlah tiket hanya bisa dipilih di halaman sebelumnya.");
 }
 
 function decreaseQty() {
-  let qty = parseInt(qtyInput.value);
-  if (qty > 1) {
-    qty--;
-    qtyInput.value = qty;
-    updateTotal(qty);
-  }
+  alert("Jumlah tiket hanya bisa dipilih di halaman sebelumnya.");
 }
 
 function copyText() {
@@ -75,9 +64,26 @@ function copyText() {
     alert("Copied: " + text);
   });
 }
+const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+const seatQty = selectedSeats.length;
 
+if (seatQty === 0) {
+  alert("Tidak ada kursi yang dipilih. Kembali ke halaman sebelumnya.");
+  window.location.href = "./ticket.html";
+}
+
+const seatClass = selectedSeats[0]?.class.toUpperCase() || 'UNKNOWN';
+document.querySelector('.class-badge').textContent = seatClass;
+document.getElementById('qty').value = seatQty;
+
+const totalSeatPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
 // Trigger update when payment method changes
 paymentMethod.addEventListener("change", () => updateTotal());
 
 // Initial total calculation
 updateTotal();
+
+ payNowButton.addEventListener("click", () => {
+      alert(`Simulating payment...\nItem: ${currentItemTitle} (${currentPurchaseType})\nTotal: ${totalPriceDisplay.textContent}\nMethod: ${paymentMethodSelect.value}\n\nThank you! You will be redirected.`);
+      window.location.href = "index.html"; 
+    });
