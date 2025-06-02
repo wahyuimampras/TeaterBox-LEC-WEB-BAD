@@ -92,7 +92,8 @@ body {
 }
 
 .show-card .location,
-.show-card .price {
+.show-card .price 
+.show-card .date{
   margin: 2px 0;
   color: #555;
 }
