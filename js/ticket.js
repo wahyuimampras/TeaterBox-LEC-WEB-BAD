@@ -77,9 +77,18 @@ function updateUI() {
 }
 
 checkoutBtn.addEventListener('click', () => {
-  alert('Proceeding to checkout...');
-});
+ const selectedSeats = document.querySelectorAll('.dot.selected');
+  const seatInfo = [];
 
+  selectedSeats.forEach(seat => {
+    seatInfo.push({
+      class: seat.dataset.class,
+      price: parseInt(seat.dataset.price)
+    });
+  });
+
+  localStorage.setItem('selectedSeats', JSON.stringify(seatInfo));
+});
 // Generate all seats
 createSeats(leftContainer, 'left', seatLayout.left);
 createSeats(centerContainer, 'center', seatLayout.center);
