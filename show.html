@@ -29,8 +29,9 @@
     <div class="show-card">
       <img src="./asset/poster1.png" alt="Poster" />
       <h3>Mary Poppins</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 20th, 2025</p>
+      <p class="price">IDR650.000</p>
       <div class="card-buttons">
         <button class="trailer-btn" onclick="window.location.href='trailer.html'">Watch Trailer</button>
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
@@ -39,8 +40,9 @@
      <div class="show-card">
       <img src="./asset/poster2.png" alt="Poster" />
       <h3>Ordinary Days</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Bandung</p>
+      <p class="date">March 25th, 2025</p>
+      <p class="price">IDR620.000</p>
        <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -48,8 +50,9 @@
      <div class="show-card">
       <img src="./asset/poster3.png" alt="Poster" />
       <h3>High Schoool</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 19th, 2025</p>
+      <p class="price">IDR670.000</p>
       <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -57,8 +60,9 @@
      <div class="show-card">
       <img src="./asset/poster4.png" alt="Poster" />
       <h3>Come What May</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 15th, 2025</p>
+      <p class="price">IDR650.000</p>
       <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -66,8 +70,9 @@
      <div class="show-card">
       <img src="./asset/poster5.png" alt="Poster" />
       <h3>High Society</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 23th, 2025</p>
+      <p class="price">IDR600.000</p>
       <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -75,8 +80,9 @@
      <div class="show-card">
       <img src="./asset/poster6.png" alt="Poster" />
       <h3>Drama</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 22th, 2025</p>
+      <p class="price">IDR640.000</p>
       <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -84,8 +90,9 @@
      <div class="show-card">
       <img src="./asset/poster7.png" alt="Poster" />
       <h3>The Three Musketeers</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 13th, 2025</p>
+      <p class="price">IDR650.000</p>
       <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -93,8 +100,9 @@
      <div class="show-card">
       <img src="./asset/poster8.png" alt="Poster" />
       <h3>The Secret of The Masks</h3>
-      <p class="location">Jakarta, March 18th, 2025</p>
-      <p class="price">IDR100.000</p>
+      <p class="location">Jakarta</p>
+      <p class="date">March 12th, 2025</p>
+      <p class="price">IDR670.000</p>
       <div class="card-buttons">
         <button class="buy-btn" onclick="window.location.href='ticket.html'">Buy Ticket</button>
       </div>
@@ -104,22 +112,6 @@
 
   <div id="footer"></div>
 
-  <script>
-    async function loadHTML(id, file, callback) {
-    const res = await fetch(`masterComponent/${file}`);
-    const text = await res.text();
-    document.getElementById(id).innerHTML = text;
-    if (callback) callback();
-  }
-
-  loadHTML("navbar", "navbar.html", () => {
-    const script = document.createElement("script");
-    script.src = "./js/navbar.js";
-    script.onload = () => initNavbar();
-    document.body.appendChild(script);
-  });
-
-  loadHTML("footer", "footer.html");
-  </script>
+  <script src="js/show.js"></script>
 </body>
 </html>
