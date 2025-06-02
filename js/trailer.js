@@ -78,7 +78,7 @@ function getPosterNumber(title) {
   const map = {
     "Mary Poppins": 1,
     "Ordinary Days": 2,
-    "High Schoool": 3,
+    "High School": 3,
     "Come What May": 4,
     "High Society": 5,
     "Drama": 6,

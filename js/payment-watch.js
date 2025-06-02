@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (itemTitleDisplay) itemTitleDisplay.textContent = currentItemTitle;
   if (purchaseTypeDisplayElement) purchaseTypeDisplayElement.textContent = `Purchase Type: ${currentPurchaseType}`;
-  if (itemBasePriceDisplay) itemBasePriceDisplay.textContent = `Rp${currentBasePrice.toLocaleString('id-ID')}`;
+  if (itemBasePriceDisplay) itemBasePriceDisplay.textContent = `IDR${currentBasePrice.toLocaleString('id-ID')}`;
 
   function getAdminFeePerItem(method) {
     switch (method.toLowerCase()) {
@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const taxOnBase = Math.round(basePriceForCalc * 0.11); 
     const total = basePriceForCalc + taxOnBase + adminFee;
 
-    adminFeeDisplay.textContent = "Rp" + adminFee.toLocaleString("id-ID");
-    taxDisplay.textContent = "Rp" + taxOnBase.toLocaleString("id-ID");
-    totalPriceDisplay.textContent = "Rp" + total.toLocaleString("id-ID");
+    adminFeeDisplay.textContent = "IDR" + adminFee.toLocaleString("id-ID");
+    taxDisplay.textContent = "IDR" + taxOnBase.toLocaleString("id-ID");
+    totalPriceDisplay.textContent = "IDR" + total.toLocaleString("id-ID");
   }
 
   if (paymentMethodSelect) {

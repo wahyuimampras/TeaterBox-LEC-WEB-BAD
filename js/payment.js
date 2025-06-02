@@ -44,11 +44,11 @@ function updateTotal(qty = seatQty) {
   const tax = Math.round(totalSeatPrice * 0.11);
   const total = totalSeatPrice + adminFee + tax;
 
-  adminFeeRow.textContent = "Rp" + adminFee.toLocaleString("id-ID");
-  taxRow.textContent = "Rp" + tax.toLocaleString("id-ID");
-  totalRow.textContent = "Rp" + total.toLocaleString("id-ID");
+  adminFeeRow.textContent = "IDR" + adminFee.toLocaleString("id-ID");
+  taxRow.textContent = "IDR" + tax.toLocaleString("id-ID");
+  totalRow.textContent = "IDR" + total.toLocaleString("id-ID");
 
-  document.getElementById("seat-price").textContent = "Rp" + totalSeatPrice.toLocaleString("id-ID");
+  document.getElementById("seat-price").textContent = "IDR" + totalSeatPrice.toLocaleString("id-ID");
 }
 
   const popup = document.getElementById("popup");
