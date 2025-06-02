@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const data = {
     "Mary Poppins": {
-      video: "https://www.youtube.com/embed/vEtR7S7zMmI?si=nQhUOxU9vaZ-qzHZ",
+      video: "https://www.youtube.com/embed/gZgUW88D15w?si=R9ozP6o3wLIYXUmg",
       synopsis: `
       “Mary Poppins Returns” stars: Emily Blunt as the practically-perfect nanny with unique magical skills who can turn any task into an unforgettable, fantastic adventure; Lin-Manuel Miranda as her friend Jack, an optimistic street lamplighter who helps bring light—and life—to the streets of London; Ben Whishaw as Michael Banks; Emily Mortimer as Jane Banks; and Julie Walters as the Banks’ housekeeper Ellen; with Colin Firth as Fidelity Fiduciary Bank’s William Weatherall Wilkins; and Meryl Streep as Mary’s eccentric cousin, Topsy. The film also introduces three new Banks’ children played by Pixie Davies, Nathanael Saleh and newcomer Joel Dawson. Angela Lansbury appears as the Balloon Lady, a treasured character from the PL Travers books and Dick Van Dyke is Mr. Dawes Jr., the retired chairman of the bank now run by Firth’s character.  
       `
     },
     "Ordinary Days": {
-      video: "https://www.youtube.com/embed/bskQ8nUCPX8?si=xNdmjdWKKPpazEVc",
+      video: "https://www.youtube.com/embed/bskQ8nUCPX8?si=VhW6RYvS4oe5YQg8",
       synopsis: "Ordinary Days follows the mysterious disappearance of a bright, athletic college student over five tense days, played from three different perspectives: her spiraling parents, the troubled detective assigned to the case and finally, the young woman herself. What happens when ordinary days are interrupted by an extraordinary event?"
     },
     "Come What May": {
