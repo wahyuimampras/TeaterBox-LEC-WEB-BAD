@@ -39,28 +39,28 @@
         <div class="coming-soon-wrapper">
           <div class="coming-soon-grid">
             <div class="poster-card">
-              <img src="asset/poster1.png" alt="Poster 1">
+              <img src="asset/poster1.png" alt="Mary Poppins Poster">
               <div class="hover-buttons">
                 <button onclick="watchTrailer('Mary Poppins')">Watch Trailer</button>
                 <button onclick="buyTicket('Mary Poppins', 'asset/poster1.png')">Buy Ticket</button>
               </div>
             </div>
             <div class="poster-card">
-              <img src="asset/poster2.png" alt="Poster 2">
+              <img src="asset/poster2.png" alt="Ordinary Days Poster">
               <div class="hover-buttons">
                 <button onclick="watchTrailer('Ordinary Days')">Watch Trailer</button>
                 <button onclick="buyTicket('Ordinary Days', 'asset/poster2.png')">Buy Ticket</button>
               </div>
             </div>
             <div class="poster-card">
-              <img src="asset/poster3.png" alt="Poster 3">
+              <img src="asset/poster3.png" alt="High School Poster">
               <div class="hover-buttons">
                 <button onclick="watchTrailer('High School')">Watch Trailer</button>
                 <button onclick="buyTicket('High School', 'asset/poster3.png')">Buy Ticket</button>
               </div>
             </div>
             <div class="poster-card">
-              <img src="asset/poster4.png" alt="Poster 4">
+              <img src="asset/poster4.png" alt="Come What May Poster">
               <div class="hover-buttons">
                 <button onclick="watchTrailer('Come What May')">Watch Trailer</button>
                 <button onclick="buyTicket('Come What May', 'asset/poster4.png')">Buy Ticket</button>
@@ -80,31 +80,31 @@
         <div class="coming-soon-wrapper">
           <div class="coming-soon-grid">
             <div class="poster-card">
-              <img src="asset/watchposter1.png" alt="Poster 1">
+              <img src="asset/watchposter1.png" alt="Matilda The Musical Poster">
               <div class="hover-buttons">
-                <button class="btn" onclick="window.location.href='trailer-watch.html'">Watch Trailer</button>
-                <button class="btn" onclick="window.location.href='order-detail.html'">Buy/Rent</button>
+                <button class="btn" onclick="watchPreviousTrailer('Matilda The Musical')">Watch Trailer</button>
+                <button class="btn" onclick="buyRentWatchMovie('Matilda The Musical', 'asset/watchposter1.png')">Buy/Rent</button>
               </div>
             </div>
             <div class="poster-card">
-              <img src="asset/watchposter2.png" alt="Poster 2">
+              <img src="asset/watchposter2.png" alt="Elements Theatre Poster">
               <div class="hover-buttons">
-                <button class="btn">Watch Trailer</button>
-                <button class="btn">Buy/Rent</button>
+                <button class="btn" onclick="watchPreviousTrailer('Elements Theatre')">Watch Trailer</button>
+                <button class="btn" onclick="buyRentWatchMovie('Elements Theatre', 'asset/watchposter2.png')">Buy/Rent</button>
               </div>
             </div>
             <div class="poster-card">
-              <img src="asset/watchposter3.png" alt="Poster 3">
+              <img src="asset/watchposter3.png" alt="Life Of Pi Poster">
               <div class="hover-buttons">
-                <button class="btn">Watch Trailer</button>
-                <button class="btn">Buy/Rent</button>
+                <button class="btn" onclick="watchPreviousTrailer('Life Of Pi')">Watch Trailer</button>
+                <button class="btn" onclick="buyRentWatchMovie('Life Of Pi', 'asset/watchposter3.png')">Buy/Rent</button>
               </div>
             </div>
             <div class="poster-card">
-              <img src="asset/watchposter4.png" alt="Poster 4">
+              <img src="asset/watchposter4.png" alt="Hamlet Poster">
               <div class="hover-buttons">
-                <button class="btn">Watch Trailer</button>
-                <button class="btn">Buy/Rent</button>
+                <button class="btn" onclick="watchPreviousTrailer('Hamlet')">Watch Trailer</button>
+                <button class="btn" onclick="buyRentWatchMovie('Hamlet', 'asset/watchposter4.png')">Buy/Rent</button>
               </div>
             </div>
           </div>
@@ -190,6 +190,7 @@
         setInterval(nextImage, 3000);
     });
     </script>
+    
     <script>
         function watchTrailer(title) {
             window.location.href = `trailer.html?title=${encodeURIComponent(title)}`;
@@ -202,6 +203,33 @@
             };
             localStorage.setItem('selectedMovie', JSON.stringify(movieData));
             window.location.href = 'ticket.html';
+        }
+
+        const watchSynopsesForIndex = {
+            "Matilda The Musical": `'Matilda the Musical' is the story of Matilda Wormwood, an extraordinarily brilliant and imaginative girl, trapped by her crass, uncaring family. At school, she finds kindness in her teacher, Miss Honey, but also faces the tyrannical, child-hating headmistress, Miss Trunchbull. Discovering she has the power of telekinesis, Matilda bravely uses her unique gifts to stand up to the cruel adults in her life and rewrite her own destiny.`,
+            "Elements Theatre": `In a metropolis called Element City, residents of fire, water, land, and air live together. A fiery young woman, Ember Lumen, forges an unlikely friendship with a go-with-the-flow water guy, Wade Ripple. Despite their elemental opposition, they begin to realize they have more in common than they thought and discover that differences can bring them together.`,
+            "Life Of Pi": `After surviving a disastrous shipwreck in the middle of the Pacific Ocean, an Indian boy named Pi Patel is left stranded on a lifeboat. He begins an epic journey of survival with an unexpected companion, a fearsome Bengal tiger named Richard Parker. Together, they face the wonder and ferocity of nature, while Pi must use his wits and faith to keep them both alive.`,
+            "Hamlet": `Prince Hamlet of Denmark returns home to find his father has been murdered, and his mother, Queen Gertrude, has married the murderer, his own uncle, Claudius. Haunted by his father's ghost who demands revenge, Hamlet spirals into madness, rage, and political intrigue. Amidst the threat of war from Norway, Hamlet must uncover the truth and decide on the best course of action, which will determine the fate of the entire kingdom.`
+        };
+
+        // Fungsi untuk WATCH PREVIOUS SHOW
+        function watchPreviousTrailer(title) {
+            window.location.href = `trailer-watch.html?title=${encodeURIComponent(title)}`;
+        }
+
+        function buyRentWatchMovie(title, posterPath) {
+            const synopsis = watchSynopsesForIndex[title];
+            if (synopsis !== undefined) { // Pastikan sinopsis ada
+                localStorage.setItem('selectedWatchMovie', JSON.stringify({
+                    title: title,
+                    poster: posterPath, 
+                    synopsis: synopsis
+                }));
+                window.location.href = 'order-detail.html';
+            } else {
+                console.error("Synopsis not found for:", title, "in watchSynopsesForIndex. Redirecting to watch.html");
+                window.location.href = 'watch.html';
+            }
         }
     </script>
 </body>

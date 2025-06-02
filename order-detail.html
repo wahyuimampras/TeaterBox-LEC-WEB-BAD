@@ -24,7 +24,7 @@
           "Matilda the Musical" tells the story of Matilda Wormwood, an exceptionally brilliant and imaginative girl trapped by her crass, uncaring family. Upon attending school, she finds a kind-hearted ally in her teacher, Miss Honey, but also faces the tyrannical and child-hating headmistress, Miss Trunchbull.
         </p>
         
-        <form action="payment-watch.html" method="GET">
+        <form id="purchase-form">
           <div class="purchase-options">
             <h4>Choose Purchase Type:</h4>
             <label>
@@ -40,8 +40,6 @@
           <div class="price-details">
             <p>Price: <span id="item-price">Rp 25.000</span></p>
           </div>
-
-          <input type="hidden" name="title" id="form-movie-title" value=""> 
           
           <button type="submit" class="btn-proceed">Proceed to Payment</button>
         </form>
@@ -86,21 +84,40 @@
 
     loadHTML("footer", "footer.html");
 
-    const purchaseInfoRadios = document.querySelectorAll('input[name="purchaseInfo"]');
-    const itemPriceDisplaySpan = document.getElementById('item-price');
-    const formMovieTitleInputElement = document.getElementById('form-movie-title');
-    const movieTitleDisplayElement = document.getElementById('movie-title-display');
+    document.addEventListener('DOMContentLoaded', () => {
+      const movieData = JSON.parse(localStorage.getItem('selectedWatchMovie'));
+      const purchaseInfoRadios = document.querySelectorAll('input[name="purchaseInfo"]');
+      const itemPriceDisplaySpan = document.getElementById('item-price');
+      
+      if (movieData) {
+        // Populate the page with the selected movie data
+        document.getElementById('movie-title-display').textContent = movieData.title;
+        document.querySelector('.order-item-poster img').src = movieData.poster;
+        document.querySelector('.order-item-poster img').alt = `${movieData.title} Poster`;
+        document.querySelector('.synopsis').textContent = movieData.synopsis;
 
-    if (movieTitleDisplayElement && formMovieTitleInputElement) {
-        formMovieTitleInputElement.value = movieTitleDisplayElement.textContent.trim();
-    }
-
-    purchaseInfoRadios.forEach(radio => {
-      radio.addEventListener('change', function() {
-        if (itemPriceDisplaySpan && this.dataset.displayPrice) {
-          itemPriceDisplaySpan.textContent = this.dataset.displayPrice;
+        // Listener for radio buttons to update the price display
+        purchaseInfoRadios.forEach(radio => {
+          radio.addEventListener('change', function() {
+            if (itemPriceDisplaySpan && this.dataset.displayPrice) {
+              itemPriceDisplaySpan.textContent = this.dataset.displayPrice;
+            }
+          });
+        });
+        
+        // Handle form submission
+        const purchaseForm = document.getElementById('purchase-form');
+        if(purchaseForm) {
+            purchaseForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const selectedPurchaseInfo = document.querySelector('input[name="purchaseInfo"]:checked').value;
+                const paymentUrl = `payment-watch.html?title=${encodeURIComponent(movieData.title)}&purchaseInfo=${encodeURIComponent(selectedPurchaseInfo)}&poster=${encodeURIComponent(movieData.poster)}`;
+                window.location.href = paymentUrl;
+            });
         }
-      });
+      } else {
+        document.querySelector('.order-detail-section').innerHTML = '<h2>Error: No movie data found. Please return to the "Watch" page and select a movie.</h2>';
+      }
     });
 
   </script>

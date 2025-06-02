@@ -80,7 +80,7 @@ body {
 
 @media (max-width:768px){
   .video-container {
-    height: 50vh;
+    height: 65vh;
   }
 
   .buy-btn {

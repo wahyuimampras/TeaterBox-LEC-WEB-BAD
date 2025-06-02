@@ -11,52 +11,32 @@
 <body>
   <div id="navbar"></div>
 
-  <!-- buat section sendiri khusus untuk halaman kalian -->
-  <section class="wacth-trailer">
-  <div class="video-container">
-    <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/6tOk_HeD0AI?si=_nTC-Kd-E2Qc17D3" 
-    title="Matilda The Musical Trailer" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Detail Cerita -->
-  <div class="story-detail">
-    <h2>Matilda The Musical - Sinopsis</h2>
-    <p>
-      "Matilda the Musical" tells the story of Matilda Wormwood, an exceptionally brilliant and imaginative girl trapped by her crass, uncaring family. Upon attending school, she finds a kind-hearted ally in her teacher, Miss Honey, but also faces the tyrannical and child-hating headmistress, Miss Trunchbull. Discovering she has the power of telekinesis, Matilda bravely uses her unique gifts to stand up to the cruel adults in her life and rewrite her own destiny.
-    </p>
-    <p>
-      The film is directed by Matthew Warchus from a screenplay by Dennis Kelly, based on the Royal Shakespeare Company’s stage production. The music and lyrics are by Tim Minchin.
-    </p>
-    <div class="btn-con">
-      <button class="buy-btn" onclick="window.location.href='order-detail.html'">Buy/Rent</button>
+  <section class="watch-trailer">
+    <div class="video-container">
+      <iframe 
+      width="560" 
+      height="315" 
+      src="" 
+      title="Movie Trailer" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+      </iframe>
     </div>
-  </div>
+
+    <div class="story-detail">
+      <h2>Loading...</h2>
+      <p>
+        Loading synopsis...
+      </p>
+      <div class="btn-con">
+        <button class="buy-btn">Buy/Rent</button>
+      </div>
+    </div>
   </section>
 
   <div id="footer"></div>
 
-  <script>
-    async function loadHTML(id, file, callback) {
-    const res = await fetch(`masterComponent/${file}`);
-    const text = await res.text();
-    document.getElementById(id).innerHTML = text;
-    if (callback) callback();
-  }
+  <script src="js/trailer-watch.js"></script>
 
-  loadHTML("navbar", "navbar.html", () => {
-    const script = document.createElement("script");
-    script.src = "./js/navbar.js";
-    script.onload = () => initNavbar();
-    document.body.appendChild(script);
-  });
-
-  loadHTML("footer", "footer.html");
-  </script>
 </body>
 </html>

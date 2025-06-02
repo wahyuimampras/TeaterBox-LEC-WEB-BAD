@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalPriceDisplay = document.getElementById('total-price-display');
   const paymentMethodSelect = document.getElementById('payment-method');
   const payNowButton = document.getElementById('pay-now-btn');
+  const itemPoster = document.getElementById('item-poster');
 
   let currentItemTitle = "Selected Movie/Show"; 
   let currentPurchaseType = "N/A"; 
@@ -50,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   
   currentItemTitle = urlParams.get('title') || currentItemTitle; 
+  const posterUrl = urlParams.get('poster');
+
+  if (posterUrl && itemPoster) {
+    itemPoster.src = decodeURIComponent(posterUrl);
+  }
   
   const purchaseInfoParam = urlParams.get('purchaseInfo');
 
@@ -114,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const popup = document.getElementById("popup");
   const popupOverlay = document.getElementById("popup-overlay");
+  let popupCallback = null;
   function openPopup(imageSrc, title, message, onCloseCallback = null) {
     document.getElementById('popup-image').src = imageSrc;
     document.getElementById('popup-title').innerText = title;
@@ -138,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (payNowButton) {
     payNowButton.addEventListener("click", () => {
-      // alert(`Simulating payment...\nItem: ${currentItemTitle} (${currentPurchaseType})\nTotal: ${totalPriceDisplay.textContent}\nMethod: ${paymentMethodSelect.value}\n\nThank you! You will be redirected.`);
         const goToHome = () => { window.location.href = "./index.html"; };
         openPopup("./asset/success.png", "Success!", "Your Payment is Success", goToHome);
     });
