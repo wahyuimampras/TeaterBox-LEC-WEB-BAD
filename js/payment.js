@@ -20,6 +20,7 @@ const adminFeeRow = document.getElementById("admin-fee");
 const taxRow = document.getElementById("tax");
 const totalRow = document.getElementById("total");
 const paymentMethod = document.getElementById("payment-method");
+const payNowButton = document.getElementById('pay-now-btn');
 
 function getAdminFeePerTicket(method) {
   switch (method.toLowerCase()) {
@@ -83,7 +84,7 @@ paymentMethod.addEventListener("change", () => updateTotal());
 // Initial total calculation
 updateTotal();
 
- pay-button.addEventListener("click", () => {
+ payNowButton.addEventListener("click", () => {
       alert(`Simulating payment...\nItem: ${currentItemTitle} (${currentPurchaseType})\nTotal: ${totalPriceDisplay.textContent}\nMethod: ${paymentMethodSelect.value}\n\nThank you! You will be redirected.`);
       window.location.href = "index.html"; 
     });
