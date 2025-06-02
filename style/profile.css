@@ -10,6 +10,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
   overflow-x: hidden;
+  background-color: #FAF1E6;
 }
 
 .profile-section {
@@ -18,7 +19,6 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #ffffff;
 }
 
 .profile-container {

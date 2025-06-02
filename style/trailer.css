@@ -12,41 +12,52 @@ body {
   overflow-x: hidden;
 }
 
+.watch-trailer{
+  min-height: 100vh;
+}
+
 .video-container {
       position: relative;
       padding-top: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
       overflow: hidden;
       background-color: #000;
-      min-height: 100vh;
+      height: 70vh;
+      padding: 40px;
 }
 
-    .video-container iframe {
+.video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       border: none;
-    }
+}
 
-    .story-detail {
+.story-detail {
       padding: 30px 20px;
-      background-color: #fff;
-      max-width: 800px;
+      background-color: #FAF1E6;
       margin: 0 auto;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       margin-top: -10px;
       border-radius: 0 0 10px 10px;
-    }
-
-    .story-detail h2 {
+}
+.story-detail h2 {
       margin-top: 0;
       font-size: 28px;
       color: #4c0d25;
-    }
+}
 
-    .story-detail p {
+.story-detail p {
       font-size: 16px;
       line-height: 1.6;
-    }
+      text-align: justify;
+      margin-top: 10px;
+}
+
+@media (max-width:768px){
+  .video-container {
+      height: 50vh;
+
+}
+}
