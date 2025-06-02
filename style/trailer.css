@@ -56,10 +56,8 @@ body {
 }
 .buy-btn {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: right;
   margin-top: 30px;
-  flex-wrap: wrap;
   padding: 10px 20px;
   background-color: maroon;
   color: white;
