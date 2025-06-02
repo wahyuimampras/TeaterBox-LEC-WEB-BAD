@@ -172,5 +172,6 @@ body {
 
   .show-card {
     padding: 0.5rem;
+    min-width: 280px;
   }
 }
