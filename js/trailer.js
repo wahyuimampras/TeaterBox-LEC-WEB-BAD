@@ -63,4 +63,27 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".story-detail h2").innerText = "Data tidak ditemukan";
     document.querySelector(".story-detail p").innerText = "Trailer atau sinopsis tidak tersedia untuk judul ini.";
   }
+  const buyBtn = document.querySelector(".buy-btn");
+    buyBtn.addEventListener("click", () => {
+      const showData = {
+        title: title,
+        poster: `./asset/poster${getPosterNumber(title)}.png`
+      };
+
+      localStorage.setItem("selectedMovie", JSON.stringify(showData));
+      window.location.href = "ticket.html";
+    });
 });
+function getPosterNumber(title) {
+  const map = {
+    "Mary Poppins": 1,
+    "Ordinary Days": 2,
+    "High Schoool": 3,
+    "Come What May": 4,
+    "High Society": 5,
+    "Drama": 6,
+    "The Three Musketeers": 7,
+    "The Secret of The Masks": 8
+  };
+  return map[title] || 1;
+}

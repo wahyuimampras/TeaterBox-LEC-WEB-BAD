@@ -105,13 +105,19 @@ function updateTotal(qty = seatQty) {
   document.getElementById('qty').value = seatQty;
 
   const totalSeatPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
-  // Trigger update when payment method changes
+
   paymentMethod.addEventListener("change", () => updateTotal());
 
-  // Initial total calculation
+
   updateTotal();
 
  payNowButton.addEventListener("click", () => {
       const goToHome = () => { window.location.href = "./index.html"; };
       openPopup("./asset/success.png", "Success!", "Your Payment is Success", goToHome);
   });
+const movieData = JSON.parse(localStorage.getItem('selectedMovie'));
+
+if (movieData) {
+  document.querySelector('.poster').src = movieData.poster;
+  document.querySelector('.ticket-header h2').textContent = movieData.title;
+}

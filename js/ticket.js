@@ -110,3 +110,8 @@ loadHTML("navbar", "navbar.html", () => {
 });
 
 loadHTML("footer", "footer.html");
+const movie = JSON.parse(localStorage.getItem("selectedMovie"));
+  if (movie) {
+    console.log("Selected movie:", movie.title);
+   
+  }
