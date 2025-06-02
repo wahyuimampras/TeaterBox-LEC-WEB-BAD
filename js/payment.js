@@ -51,40 +51,67 @@ function updateTotal(qty = seatQty) {
   document.getElementById("seat-price").textContent = "Rp" + totalSeatPrice.toLocaleString("id-ID");
 }
 
-function increaseQty() {
-  alert("Jumlah tiket hanya bisa dipilih di halaman sebelumnya.");
-}
+  const popup = document.getElementById("popup");
+  const popupOverlay = document.getElementById("popup-overlay");
+  function openPopup(imageSrc, title, message, onCloseCallback = null) {
+    document.getElementById('popup-image').src = imageSrc;
+    document.getElementById('popup-title').innerText = title;
+    document.getElementById('popup-message').innerText = message;
+    popup.classList.add("open-popup");
+    popupOverlay.classList.add("active");
+    popupCallback = onCloseCallback;
+  }
 
-function decreaseQty() {
-  alert("Jumlah tiket hanya bisa dipilih di halaman sebelumnya.");
-}
+  function closePopup() {
+    popup.classList.remove("open-popup");
+    popupOverlay.classList.remove("active");
 
-function copyText() {
-  const text = "OD18052025025";
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Copied: " + text);
-  });
-}
-const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
-const seatQty = selectedSeats.length;
+    if (typeof popupCallback === 'function') {
+      popupCallback(); 
+    }
+    popupCallback = null;
+  }
 
-if (seatQty === 0) {
-  alert("Tidak ada kursi yang dipilih. Kembali ke halaman sebelumnya.");
-  window.location.href = "./ticket.html";
-}
+  document.getElementById('popup-overlay').addEventListener('click', closePopup);
+  document.getElementById('closeBtn').addEventListener('click', closePopup);
 
-const seatClass = selectedSeats[0]?.class.toUpperCase() || 'UNKNOWN';
-document.querySelector('.class-badge').textContent = seatClass;
-document.getElementById('qty').value = seatQty;
+  function increaseQty() {
+    // alert("Jumlah tiket hanya bisa dipilih di halaman sebelumnya.");
+    openPopup("./asset/error.png", "Error!", "Quantity can only be choose in the previous page");
+  }
 
-const totalSeatPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
-// Trigger update when payment method changes
-paymentMethod.addEventListener("change", () => updateTotal());
+  function decreaseQty() {
+    // alert("Jumlah tiket hanya bisa dipilih di halaman sebelumnya.");
+    openPopup("./asset/error.png", "Error!", "Quantity can only be choose in the previous page");
+  }
 
-// Initial total calculation
-updateTotal();
+  function copyText() {
+    const text = "OD18052025025";
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied: " + text);
+    });
+  }
+  const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+  const seatQty = selectedSeats.length;
+
+  if (seatQty === 0) {
+    // alert("Tidak ada kursi yang dipilih. Kembali ke halaman sebelumnya.");
+    const backToTicket = () => { window.location.href = "./index.html"; };
+    openPopup("./asset/error.png", "Error!", "You did not choose any seats. Please back to the previous page", backToTicket);
+  }
+
+  const seatClass = selectedSeats[0]?.class.toUpperCase() || 'UNKNOWN';
+  document.querySelector('.class-badge').textContent = seatClass;
+  document.getElementById('qty').value = seatQty;
+
+  const totalSeatPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+  // Trigger update when payment method changes
+  paymentMethod.addEventListener("change", () => updateTotal());
+
+  // Initial total calculation
+  updateTotal();
 
  payNowButton.addEventListener("click", () => {
-      alert(`Simulating payment...\n\nThank you! You will be redirected.`);
-      window.location.href = "index.html"; 
-    });
+      const goToHome = () => { window.location.href = "./index.html"; };
+      openPopup("./asset/success.png", "Success!", "Your Payment is Success", goToHome);
+  });
