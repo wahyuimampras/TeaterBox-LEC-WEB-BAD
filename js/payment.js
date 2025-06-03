@@ -106,10 +106,13 @@ function updateTotal(qty = seatQty) {
 
   const totalSeatPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
 
-  paymentMethod.addEventListener("change", () => updateTotal());
-
-
+  paymentMethod.addEventListener("change", () => {
   updateTotal();
+  updateVANumber();
+});
+
+updateTotal();
+updateVANumber();
 
  payNowButton.addEventListener("click", () => {
       const goToHome = () => { window.location.href = "./index.html"; };
@@ -120,4 +123,23 @@ const movieData = JSON.parse(localStorage.getItem('selectedMovie'));
 if (movieData) {
   document.querySelector('.poster').src = movieData.poster;
   document.querySelector('.ticket-header h2').textContent = movieData.title;
+}
+function generateRandomVA() {
+  let va = "";
+  for (let i = 0; i < 10; i++) {
+    va += Math.floor(Math.random() * 10);
+  }
+  return va;
+}
+
+function updateVANumber() {
+  const vaNumber = generateRandomVA();
+  document.getElementById("va-number").textContent = vaNumber;
+}
+
+function copyVA() {
+  const vaText = document.getElementById("va-number").textContent;
+  navigator.clipboard.writeText(vaText).then(() => {
+    alert("Copied VA Number: " + vaText);
+  });
 }
