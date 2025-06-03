@@ -245,3 +245,9 @@ body {
     visibility: visible;
     opacity: 1;
 }
+#virtual-account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
