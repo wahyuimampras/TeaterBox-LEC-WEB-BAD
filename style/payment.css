@@ -251,3 +251,101 @@ body {
   gap: 8px;
   font-weight: 600;
 }
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    margin-top: 15px;
+  }
+
+  .ticket-container {
+    margin: 1rem;
+  }
+
+  .ticket {
+    padding: 1.5rem;
+    padding-right: 1.5rem;
+    width: 100%;
+  }
+
+  .left-notch, .right-notch {
+    width: 60px;
+    height: 60px;
+    left: -30px;
+    right: -30px;
+  }
+
+  .ticket-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ticket-left .poster {
+    width: 100px;
+  }
+
+  .ticket-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .class-badge {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .quantity-selector {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .quantity-selector button,
+  .quantity-selector input {
+    font-size: 14px;
+  }
+
+  .ticket-details .row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ticket-details .total {
+    font-size: 1.2rem;
+  }
+
+  .pay-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  #payment-method {
+    width: 100%;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .quantityBtn {
+    width: 40px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .quantity {
+    width: 60px;
+    font-size: 14px;
+  }
+
+  .popup {
+    width: 90%;
+    padding: 0 20px 20px;
+  }
+
+  .popup h2 {
+    font-size: 24px;
+  }
+
+  .popup p {
+    font-size: 16px;
+  }
+}
